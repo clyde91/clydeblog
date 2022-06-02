@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace为接口名-->
+<mapper namespace="com.clyde.blog.dao.UserDAO">
+    <!--id为方法名。resultType为实体类名-->
+    <select id="login" resultType="com.clyde.blog.model.User">
+        select *
+        from t_user where username=#{username} and  password=md5(#{password})
+    </select>
+    <!--id为方法名。resultType为实体类名-->
+    <insert id="register" >
+        insert into t_user values (null,#{username},md5(#{password}),#{avatar})
+    </insert>
+</mapper>

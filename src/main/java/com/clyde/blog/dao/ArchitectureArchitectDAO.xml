@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace为接口名-->
+<mapper namespace="com.clyde.blog.dao.ArchitectureArchitectDAO">
+    <!--使用map定义列和属性关系-->
+    <resultMap type="com.clyde.blog.model.ArchitectureArchitect" id="architectureArchitectMap">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="country" column="country"/>
+        <result property="avatar" column="avatar"/>
+    </resultMap>
+<!--    List<String> selectArchitectNames(Set<Integer> errorNums);-->
+    <select id="selectArchitectNames" resultType="String">
+        select name from t_architecture_architect where id in
+        <foreach collection="errorNums" item="num" separator="," open="(" close=")">
+            #{num}
+        </foreach>
+    </select>
+<!--    <select id="selectBlogListByCategoryId" resultMap="blogMap">-->
+<!--        select *-->
+<!--        from t_blog where category_id=#{category_id}-->
+<!--    </select>-->
+<!--    <select id="selectBlogListByTable" resultMap="blogMap">-->
+<!--        select *-->
+<!--        from ${table_name}-->
+<!--    </select>-->
+<!--    <select id="selectBlogListByApi" resultMap="blogMap">-->
+<!--        select t_blog.*-->
+<!--        from t_blog left join t_blog_category on t_blog.category_id=t_blog_category.id where t_blog_category.parent_id=#{parent_id}-->
+<!--    </select>-->
+<!--&lt;!&ndash;    public void updateBlogById(Blog blog);&ndash;&gt;-->
+<!--    <update id="updateBlogById">-->
+<!--        update t_blog set title = #{title} , body = #{body}, created_time = #{createdTime}, modified_time = #{modifiedTime}, category_id = #{category.id}, keywords=#{keywords}, description=#{description} where id= #{id}-->
+<!--    </update>-->
+<!--&lt;!&ndash;    public void insertBlog(Blog blog);&ndash;&gt;-->
+<!--    <insert id="insertBlog">-->
+<!--        insert into t_blog values (null, #{title},#{body},#{createdTime},#{modifiedTime},#{author.id},#{category.id},#{keywords},#{description})-->
+<!--    </insert>-->
+<!--&lt;!&ndash;    public List<Blog> selectByTime(Integer num);&ndash;&gt;-->
+<!--    <select id="selectByTime"  resultMap="blogMap">-->
+<!--        select * from t_blog order by created_time desc limit 0,#{num}-->
+<!--    </select>-->
+</mapper>

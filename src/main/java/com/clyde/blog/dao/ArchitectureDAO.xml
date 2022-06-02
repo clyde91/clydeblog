@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace为接口名-->
+<mapper namespace="com.clyde.blog.dao.ArchitectureDAO">
+    <!--使用map定义列和属性关系-->
+    <resultMap type="com.clyde.blog.model.Architecture" id="architectureMap">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="country" column="country"/>
+        <result property="photo" column="photo"/>
+        <association property="architect" select="com.clyde.blog.dao.ArchitectureArchitectDAO.selectById"
+                     column="architect_id"/>
+        <collection property="features" select="com.clyde.blog.dao.ArchitectureFeatureDAO.selectByArchitectureId"
+                    column="id">
+            <id property="id" column="id"/>
+            <result property="name" column="name"/>
+        </collection>
+    </resultMap>
+
+    <!--    public void updateBlogById(Blog blog);-->
+    <update id="updateArchitectureById">
+        update t_architecture
+        set name         = #{name},
+            architect_id = #{architect.id},
+            country      = #{country},
+            photo        = #{photo}
+        where id = #{id}
+    </update>
+    <!--    public void insertBlog(Blog blog);-->
+    <insert id="insertArchitecture" useGeneratedKeys="true" keyProperty="id">
+        insert into t_architecture
+        values (null, #{name}, #{architect.id}, #{country}, #{photo})
+    </insert>
+    <!--&lt;!&ndash;    void  insertFeatureById(ArchitectureFeature feature,Integer id);&ndash;&gt;-->
+    <!--    <insert id="insertFeatureById">insert into t_architecture_feature_relation values (null,#{id},#{feature.id})</insert>-->
+    <!--    void  insertFeatureById(ArchitectureFeature feature,Integer id);-->
+    <insert id="insertFeaturesById">
+        insert into t_architecture_feature_relation values
+        <foreach collection="features" item="feature" separator=",">
+            (null,#{id},#{feature.id})
+        </foreach>
+
+    </insert>
+    <!--    void  delFeaturesById(Integer id);-->
+    <delete id="delFeaturesById">
+        delete
+        from t_architecture_feature_relation
+        where architecture_id = #{id}
+    </delete>
+    <!--        IPage<Architecture> selectListByFilter(IPage<Architecture> iPage, Architecture architecture);-->
+    <select id="selectListByFilter" resultMap="architectureMap">
+        select t1.* from t_architecture t1
+        <if test="architecture.features != null and architecture.features !={} ">
+            right join(select architecture_id, count(*) count from t_architecture_feature_relation where feature_id in
+            <foreach collection="architecture.features" item="feature" separator="," open="(" close=")">
+                #{feature.id}
+            </foreach>
+            group by architecture_id) t2 on t1.id=t2.architecture_id
+        </if>
+        <where>
+            <if test="architecture.name != null and architecture.name !='' ">
+                and name like "%"#{architecture.name}"%"
+            </if>
+            <if test="architecture.country != null and architecture.country !='' ">
+                and country like concat('%', #{architecture.country},'%')
+            </if>
+            <if test="architecture.features != null and architecture.features !={} ">
+                and t2.count=${architecture.features.size()}
+            </if>
+        </where>
+        <if test="architecture.orderField !=null and architecture.orderField != '' ">
+            order by ${architecture.orderField} ${architecture.orderType}
+        </if>
+    </select>
+<!--    int selectCount();-->
+    <select id="selectCount" resultType="int">
+        select count(*) from t_architecture
+    </select>
+<!--    List<String> getArchitectureNames(Set<Integer> set);-->
+    <select id="getArchitectureNames" resultType="String">
+        select name from t_architecture where id in
+        <foreach collection="list" item="num" separator="," open="(" close=")">
+            #{num}
+        </foreach>
+    </select>
+<!--    List<String> selectAllCountry();-->
+    <select id="selectAllCountry" resultType="String">
+        select distinct country  from t_architecture
+    </select>
+</mapper>

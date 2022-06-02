@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace为接口名-->
+<mapper namespace="com.clyde.blog.dao.BlogDAO">
+    <!--使用map定义列和属性关系-->
+    <resultMap type="com.clyde.blog.model.Blog" id="blogMap">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="body" column="body"/>
+        <result property="createdTime" column="created_time"/>
+        <result property="modifiedTime" column="modified_time"/>
+        <result property="keywords" column="keywords"/>
+        <result property="description" column="description"/>
+        <association property="category" select="com.clyde.blog.dao.BlogCategoryDAO.selectById" column="category_id"/>
+        <association property="author" select="com.clyde.blog.dao.UserDAO.selectById" column="author_id"/>
+    </resultMap>
+    <select id="selectBlogListByCategoryId" resultMap="blogMap">
+        select *
+        from t_blog where category_id=#{category_id} order by created_time desc
+    </select>
+    <select id="selectBlogListByApi" resultMap="blogMap">
+        select t_blog.*
+        from t_blog left join t_blog_category on t_blog.category_id=t_blog_category.id where t_blog_category.parent_id=#{parent_id} order by created_time desc
+    </select>
+<!--    public void updateBlogById(Blog blog);-->
+    <update id="updateBlogById">
+        update t_blog set title = #{title} , body = #{body}, created_time = #{createdTime}, modified_time = #{modifiedTime}, category_id = #{category.id}, keywords=#{keywords}, description=#{description} where id= #{id}
+    </update>
+<!--    public void insertBlog(Blog blog);-->
+    <insert id="insertBlog">
+        insert into t_blog values (null, #{title},#{body},#{createdTime},#{modifiedTime},#{author.id},#{category.id},#{keywords},#{description})
+    </insert>
+<!--    public List<Blog> selectByTime(Integer num);-->
+    <select id="selectByTime"  resultMap="blogMap">
+        select * from t_blog order by created_time desc limit 0,#{num}
+    </select>
+</mapper>

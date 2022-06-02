@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace为接口名-->
+<mapper namespace="com.clyde.blog.dao.HealthDAO">
+    <!--使用map定义列和属性关系-->
+<!--    <resultMap id="studentMap" type="com.clyde.domain.Student">-->
+<!--        <id column="studentid" property="studi"/>-->
+<!--        <id column="name" property="stuname"/>-->
+<!--        <id column="age" property="stuage"/>-->
+<!--    </resultMap>-->
+    <!--id为方法名。resultType为实体类名-->
+    <select id="queryHealthList" resultType="com.clyde.blog.model.Health">
+        select *
+        from code_blog_codeblog
+    </select>
+</mapper>

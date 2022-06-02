@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace为接口名-->
+<mapper namespace="com.clyde.blog.dao.DiaryDAO">
+    <!--使用map定义列和属性关系-->
+    <resultMap type="com.clyde.blog.model.Diary" id="diaryMap">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="body" column="body"/>
+        <result property="createdTime" column="created_time"/>
+        <result property="hidden" column="hidden"/>
+    </resultMap>
+
+</mapper>

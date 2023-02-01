@@ -93,7 +93,6 @@ public class ArchitectureServiceImpl extends ServiceImpl<ArchitectureDAO, Archit
                         //如果错误选项运气不好放入了
                         if (errorNames.get(i).equals(architecture.getName())) {
                             options.add(errorNames.get(optionNums - 1));
-                            System.out.println("答案相等放入后面那个" + errorNames.get(optionNums - 1));
                         } else {
                             options.add(errorNames.get(i));
                         }
@@ -163,5 +162,4 @@ public class ArchitectureServiceImpl extends ServiceImpl<ArchitectureDAO, Archit
         }
         return list;
     }
-
 }

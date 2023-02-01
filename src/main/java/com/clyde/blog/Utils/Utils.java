@@ -3,6 +3,7 @@ package com.clyde.blog.Utils;
 import java.util.*;
 
 /**
+ * 创建随机数
  * @author clyde
  */
 public class Utils {

@@ -52,6 +52,7 @@ public class BlogCategory implements Serializable {
     public String toString() {
         return "BlogCategory{" +
                 "id=" + id +
+                ", parentId=" + parentId +
                 ", name='" + name + '\'' +
                 ", logo='" + logo + '\'' +
                 '}';

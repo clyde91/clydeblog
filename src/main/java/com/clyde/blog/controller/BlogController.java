@@ -21,7 +21,7 @@ public class BlogController {
     private BlogService blogService;
 
     //分页返回全部博客
-    @RequestMapping(value = "/blogs/{index}/{size}", method = RequestMethod.GET)
+    @RequestMapping(value = "/blog/{index}/{size}", method = RequestMethod.GET)
     public CommonResult<IPage<Blog>> getListByIndexPages(@PathVariable("index") Integer index, @PathVariable("size") Integer size) {
         IPage<Blog> iPage = new Page<>(index, size);
         IPage<Blog> page = blogService.getList(iPage);

@@ -60,6 +60,9 @@
             group by architecture_id) t2 on t1.id=t2.architecture_id
         </if>
         <where>
+            <if test="architecture.architect.id != null and architecture.architect.id !='' ">
+                and architect_id = #{architecture.architect.id}
+            </if>
             <if test="architecture.name != null and architecture.name !='' ">
                 and name like "%"#{architecture.name}"%"
             </if>

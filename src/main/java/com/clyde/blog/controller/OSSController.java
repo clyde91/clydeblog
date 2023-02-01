@@ -26,9 +26,7 @@ public class OSSController {
     @CrossOrigin
     @RequestMapping("oss/policy")
     public CommonResult<OssPolicyResult> policy(String api){
-        System.out.println("api = " + api);
         OssPolicyResult result = ossService.policy(api);
-        System.out.println("result = " + result);
         return CommonResult.success(result);
     }
 }

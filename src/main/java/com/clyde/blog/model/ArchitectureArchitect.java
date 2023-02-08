@@ -4,11 +4,13 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
+import java.io.Serializable;
+
 /**
  * @author clyde
  */
 @TableName(value = "t_architecture_architect",resultMap = "com.clyde.blog.dao.ArchitectureArchitectDAO.architectureArchitectMap")
-public class ArchitectureArchitect {
+public class ArchitectureArchitect implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
     private String name;

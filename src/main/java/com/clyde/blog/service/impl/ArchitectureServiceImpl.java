@@ -72,8 +72,11 @@ public class ArchitectureServiceImpl extends ServiceImpl<ArchitectureDAO, Archit
             ArchitectureGuessDTO guess = new ArchitectureGuessDTO();
             //变量
             List<String> options;
+            //错误的id
             Set<Integer> errorNums;
+            //错误的名字
             List<String> errorNames;
+            //正确答案的图片。题目
             guess.setPhoto(architecture.getPhoto());
             //随机选题0建筑1建筑师2国家
             Integer random = (int) Math.floor(3 * Math.random());

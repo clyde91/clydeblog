@@ -2,10 +2,14 @@ package com.clyde.blog.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.clyde.blog.common.api.RedisCache;
 import com.clyde.blog.model.Architecture;
 import com.clyde.blog.model.ArchitectureFeature;
 import com.clyde.blog.model.Blog;
+import org.apache.ibatis.annotations.CacheNamespace;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Set;
@@ -13,6 +17,7 @@ import java.util.Set;
 /**
  * @author clyde
  */
+@CacheNamespace(implementation = RedisCache.class)
 public interface ArchitectureDAO extends BaseMapper<Architecture> {
     void updateArchitectureById(Architecture architecture);
 

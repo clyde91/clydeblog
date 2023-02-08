@@ -5,13 +5,14 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * @author clyde
  */
 @TableName(value = "t_architecture", resultMap = "com.clyde.blog.dao.ArchitectureDAO.architectureMap")
-public class Architecture {
+public class Architecture implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
     private String name;

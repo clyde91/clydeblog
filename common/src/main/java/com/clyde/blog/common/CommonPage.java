@@ -1,4 +1,4 @@
-package com.clyde.blog.common.api;
+package com.clyde.blog.common;
 
 import cn.hutool.core.convert.Convert;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;

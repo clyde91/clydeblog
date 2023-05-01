@@ -1,5 +1,7 @@
 package com.clyde.blog.service;
 
+import com.clyde.blog.model.User;
+
 /**
  * @author clyde
  */

@@ -3,16 +3,16 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--namespace为接口名-->
-<mapper namespace="com.clyde.com.clyde.blog.dao.ArchitectureDAO">
+<mapper namespace="com.clyde.blog.dao.ArchitectureDAO">
     <!--使用map定义列和属性关系-->
-    <resultMap type="com.clyde.com.clyde.blog.model.Architecture" id="architectureMap">
+    <resultMap type="com.clyde.blog.model.Architecture" id="architectureMap">
         <id property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="country" column="country"/>
         <result property="photo" column="photo"/>
-        <association property="architect" select="com.clyde.com.clyde.blog.dao.ArchitectureArchitectDAO.selectById"
+        <association property="architect" select="com.clyde.blog.dao.ArchitectureArchitectDAO.selectById"
                      column="architect_id"/>
-        <collection property="features" select="com.clyde.com.clyde.blog.dao.ArchitectureFeatureDAO.selectByArchitectureId"
+        <collection property="features" select="com.clyde.blog.dao.ArchitectureFeatureDAO.selectByArchitectureId"
                     column="id">
             <id property="id" column="id"/>
             <result property="name" column="name"/>

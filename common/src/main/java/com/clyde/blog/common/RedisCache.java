@@ -1,4 +1,4 @@
-package com.clyde.blog.common.api;
+package com.clyde.blog.common;
 
 
 import com.clyde.blog.Utils.ApplicationContextUtils;

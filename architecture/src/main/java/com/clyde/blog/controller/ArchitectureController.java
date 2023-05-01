@@ -2,7 +2,7 @@ package com.clyde.blog.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.clyde.blog.common.api.CommonResult;
+import com.clyde.blog.common.CommonResult;
 import com.clyde.blog.model.Architecture;
 import com.clyde.blog.model.ArchitectureArchitect;
 import com.clyde.blog.model.ArchitectureGuessDTO;
@@ -21,8 +21,8 @@ import java.util.List;
 public class ArchitectureController {
     @Autowired
     private ArchitectureService architectureService;
-    @Autowired
-    private RedisService redisService;
+//    @Autowired
+//    private RedisService redisService;
 
     //分页返回全部建筑
     @RequestMapping(value = "/{index}/{size}", method = RequestMethod.GET)

@@ -2,7 +2,7 @@ package com.clyde.blog.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.clyde.blog.common.api.CommonResult;
+import com.clyde.blog.common.CommonResult;
 import com.clyde.blog.model.Blog;
 import com.clyde.blog.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;

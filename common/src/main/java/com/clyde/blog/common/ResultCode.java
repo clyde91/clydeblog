@@ -1,4 +1,4 @@
-package com.clyde.blog.common.api;
+package com.clyde.blog.common;
 
 /**
  * 枚举了一些常用API操作码

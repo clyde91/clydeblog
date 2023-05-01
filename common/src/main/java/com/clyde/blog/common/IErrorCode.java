@@ -1,4 +1,4 @@
-package com.clyde.blog.common.api;
+package com.clyde.blog.common;
 
 /**
  * 封装API的错误码

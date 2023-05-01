@@ -1,6 +1,8 @@
 package com.clyde.blog.controller;
 
-import com.clyde.blog.common.api.CommonResult;
+import com.clyde.blog.common.CommonResult;
+import com.clyde.blog.model.User;
+import com.clyde.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,6 +1,6 @@
 package com.clyde.blog.controller;
 
-import com.clyde.blog.common.api.CommonResult;
+import com.clyde.blog.common.CommonResult;
 import com.clyde.blog.model.OssPolicyResult;
 import com.clyde.blog.service.OssService;
 import org.springframework.beans.factory.annotation.Autowired;

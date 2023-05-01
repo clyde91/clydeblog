@@ -3,9 +3,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--namespace为接口名-->
-<mapper namespace="com.clyde.com.clyde.blog.dao.ArchitectureArchitectDAO">
+<mapper namespace="com.clyde.blog.dao.ArchitectureArchitectDAO">
     <!--使用map定义列和属性关系-->
-    <resultMap type="com.clyde.com.clyde.blog.model.ArchitectureArchitect" id="architectureArchitectMap">
+    <resultMap type="com.clyde.blog.model.ArchitectureArchitect" id="architectureArchitectMap">
         <id property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="country" column="country"/>
